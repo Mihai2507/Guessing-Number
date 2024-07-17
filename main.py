@@ -1,13 +1,14 @@
 import random
 
 
-def play():
+def play(n):
     global guess
     count = 0
-    computer = random.randint(1, 10)
-    print("Let's play a game of Guessing Game!\nI am guessing a number beetween 1 and 10\n")
-    while count < 5:
-        guess = int(input("Guess a number between 1 and 10:\n"))
+    computer = random.randint(1, n)
+    print(f"Let's play a game of Guessing Game!\nI am guessing a number beetween 1 and {n}\n......")
+    print("Your turn now.")
+    while count < (n/2):
+        guess = int(input(f"Guess a number between 1 and {n}:\n"))
         count += 1
         if guess < computer:
             print("Your guess is too low!")
@@ -18,11 +19,12 @@ def play():
     if guess == computer:
         print("Congrats! You guessed my number in " + str(count) + " tries!\nYou won!")
     else:
-        print("Sorry, you didn't guess my number in less then 5 tries!\nYou lost!")
+        print(f"Sorry, you didn't guess my number in less then {n/2} tries!\nYou lost!")
 
 
 if __name__ == '__main__':
     print("Welcome to Guessing Game!")
     name = input("Please, enter your name:\n")
     print(f"Hello, {name}!")
-    play()
+    n = int(input("Please, enter the maximum number for the range:\n"))
+    play(n)
